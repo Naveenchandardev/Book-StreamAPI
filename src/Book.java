@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -67,7 +68,7 @@ public class Book {
 
 		//Highest price Book;
 		Book expensiveBook =books.stream().
-				max((book1,book2)->Double.compare(book1.getPrice(), book2.getPrice())).
+				max(Comparator.comparingDouble(Book::getPrice)).
 				orElse(null);
 		System.out.println("Expensive Book: "+expensiveBook.getPrice());
 		System.out.println();
@@ -78,12 +79,5 @@ public class Book {
 		System.out.println("Price greater than 300 books list: ");
 		System.out.println();
 		newBooks.forEach(x->System.out.println("Title -"+x.getTitle()+"\nAuthor-"+x.getAuthor()+"\nPrice- "+x.price+"\n"));
-		
-		
-		
-		
-		
 		}
-
-
 }
